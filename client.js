@@ -1,4 +1,5 @@
 const form = document.querySelector("form");
+const API_URL = "http://localhost:5000/quacks";
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -10,5 +11,13 @@ form.addEventListener("submit", (event) => {
     name,
     message
   };
-  console.log(quack);
+
+  fetch(API_URL, {
+    method: "POST",
+    body: quack,
+    headers: {
+      "content-type": "application/json"
+    }
+  });
+
 });
